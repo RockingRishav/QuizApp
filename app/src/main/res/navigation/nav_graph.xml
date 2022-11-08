@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph.xml"
+    app:startDestination="@id/defaultFragment">
+
+    <fragment
+        android:id="@+id/defaultFragment"
+        android:name="com.example.myquizapp.DefaultFragment"
+        android:label="fragment_default"
+        tools:layout="@layout/fragment_default" >
+        <action
+            android:id="@+id/action_defaultFragment_to_quizQuestionFragment"
+            app:destination="@id/quizQuestionFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/quizQuestionFragment"
+        android:name="com.example.myquizapp.QuizQuestionFragment"
+        android:label="fragment_quiz_question"
+        tools:layout="@layout/fragment_quiz_question" >
+        <argument
+            android:name="userName"
+            app:argType="string" />
+        <action
+            android:id="@+id/action_quizQuestionFragment_to_resultFragment"
+            app:destination="@id/resultFragment"
+            app:popUpTo="@id/quizQuestionFragment"
+            app:popUpToInclusive="true" />
+    </fragment>
+    <fragment
+        android:id="@+id/resultFragment"
+        android:name="com.example.myquizapp.ResultFragment"
+        android:label="fragment_result"
+        tools:layout="@layout/fragment_result" >
+        <argument
+            android:name="userName"
+            app:argType="string" />
+        <action
+            android:id="@+id/action_resultFragment_to_defaultFragment"
+            app:destination="@id/defaultFragment" />
+        <argument
+            android:name="score"
+            app:argType="string" />
+        <argument
+            android:name="totalQuestion"
+            app:argType="string" />
+    </fragment>
+</navigation>
